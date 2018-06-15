@@ -4,6 +4,7 @@ class Connect4 {
         this.COLS = 7;
         this.selector = selector; 
         this.createGrid();
+        this.setupEventListeners(); 
     } 
 
         // const $grid = $(selector); 
@@ -14,7 +15,7 @@ class Connect4 {
         createGrid(){
             const $board = $(this.selector); 
             // console.log($board); 
-            // for loop for rows and cols
+            // create for loop for rows and cols
             for (let row = 0; row < this.ROWS; row++) {
                 const $row = $('<div>').addClass('row');
                 $board.append($row);
@@ -22,7 +23,17 @@ class Connect4 {
                 const $col = $('<div>').addClass('col empty'); 
                 $row.append($col); 
             }
-            }
-            // console.log($board.html()); 
         }
+            
+    }
+    //create event listners for grid
+    setupEventListeners(){
+        const $board = $(this.selector); 
+
+        $board.on('mouseenter', '.col.empty', function(){
+            console.log('here', this); 
+
+        })
+
+    }
 } 
