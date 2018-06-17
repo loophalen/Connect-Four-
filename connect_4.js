@@ -17,10 +17,13 @@ class Connect4 {
             // console.log($board); 
             // create for loop for rows and cols
             for (let row = 0; row < this.ROWS; row++) {
-                const $row = $('<div>').addClass('row');
+                const $row = $('<div>').addClass('row').attr('data-row', row); 
                 $board.append($row);
             for (let col = 0; col < this.COLS; col++) {
-                const $col = $('<div>').addClass('col empty'); 
+                const $col = $('<div>').addClass('col empty')
+                //add data col-data row
+                    .attr('data-col', col)
+                    .attr('data-row', row);   
                 $row.append($col); 
             }
         }
@@ -29,9 +32,13 @@ class Connect4 {
     //create event listners for grid
     setupEventListeners(){
         const $board = $(this.selector); 
-
+        //mouse enter on hover on col
         $board.on('mouseenter', '.col.empty', function(){
-            console.log('here', this); 
+            // console.log('here', this); 
+            const col = $(this).data('col'); 
+            const $lastEmptyCell = findLastEmptyCell(col); 
+            $lastEmptyCell.addClass('next-red'); 
+            console.log(col); 
 
         })
 
