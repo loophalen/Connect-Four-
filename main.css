@@ -4,7 +4,7 @@ body{
 
 #gameboard{
     display: inline-block;
-    background-color: palegreen; 
+    background-color: yellow; 
 }
 
 .col {
@@ -20,3 +20,18 @@ body{
 .next-red {
     background: rgba(255, 0, 0, 0.295); 
 }
+
+.next-black {
+    background-color: black; 
+}
+
+
+
+.col.red{
+    background-color: red; 
+}
+
+.col.black{
+    background-color: black; 
+}
+
