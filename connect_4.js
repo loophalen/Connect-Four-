@@ -32,15 +32,34 @@ class Connect4 {
     //create event listners for grid
     setupEventListeners(){
         const $board = $(this.selector); 
+
+        function findLastEmptyCell(col) {
+            const cells = $(`.col[data-col='${col}']`); 
+            for(let i = cells.length -1; i >= 0; i-- ){
+                const $cell = $(cells[i]); 
+                if ($cell.hasClass('empty')){
+                    return $cell; 
+                }
+            } 
+            return nulll; 
+            // console.log(cells);  
+
+        }
         //mouse enter on hover on col
         $board.on('mouseenter', '.col.empty', function(){
             // console.log('here', this); 
             const col = $(this).data('col'); 
             const $lastEmptyCell = findLastEmptyCell(col); 
-            $lastEmptyCell.addClass('next-red'); 
-            console.log(col); 
+            $lastEmptyCell.addClass(`next-red`); 
+            // console.log(col); 
 
         })
+
+        //remove classes on mouse leave function 
+        $board.on('mouseleave', '.col', function(){
+            $('.col').removeClass(`next-red`); 
+        })
+
 
     }
 } 
