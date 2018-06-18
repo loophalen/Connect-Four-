@@ -5,6 +5,7 @@ class Connect4 {
         this.player = 'red'; 
         this.selector = selector; 
         this.isGameOver = false; 
+        this.onPlayerMove = function() {}; 
         this.createGrid();
         this.setupEventListeners(); 
     } 
@@ -84,8 +85,9 @@ class Connect4 {
                 return; 
             }
             
-            //alternates between red and black pieces
+            //alternates between red and black pieces 
             that.player = (that.player === 'red') ? 'black' : 'red'; 
+            that.onPlayerMove(); 
             $(this).trigger('mouseenter'); 
             
         })
@@ -154,7 +156,8 @@ class Connect4 {
     }
     //create restart method for game
     restart() {
-        this.createGrid(); 
+        this.createGrid();
+        this.onPlayerMove();  
 
     }
 
