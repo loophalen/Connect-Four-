@@ -5,7 +5,7 @@ body{
     /* border: 25px solid white;  */
 }
 
-h1{
+h1 {
     /* font-family: 'Lato', sans-serif;
     font-style: thin;  */
     /* font-family: 'Open Sans', sans-serif; */
@@ -15,6 +15,15 @@ h1{
     color: black;  
 }
 
+h2 {
+    /* display: inline-block;  */
+    font-family: 'Space Mono', monospace;
+    text-transform: lowercase;
+    font-size: 20px; 
+    color: black; 
+}
+
+
 button{
     display: inline-block; 
     border: none; 
@@ -22,6 +31,12 @@ button{
     font-family: 'Space Mono', monospace; 
     text-transform: lowercase; 
     font-size: 15px; 
+    margin: 10px; 
+    padding: 5px; 
+}
+
+button:focus{
+    outline: 1px solid black; 
 }
 
 
