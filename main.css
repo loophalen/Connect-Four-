@@ -1,6 +1,6 @@
 body{
     text-align: center; 
-    background-color: #262626; 
+    background-color: #f5f5f5; 
     color: white;
     /* border: 25px solid white;  */
 }
@@ -8,7 +8,20 @@ body{
 h1{
     /* font-family: 'Lato', sans-serif;
     font-style: thin;  */
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Space Mono', monospace;
+    text-transform: lowercase; 
+    font-stretch: ultra-expanded; 
+    color: black;  
+}
+
+button{
+    display: inline-block; 
+    border: none; 
+    background-color: #f5f5f5; 
+    font-family: 'Space Mono', monospace; 
+    text-transform: lowercase; 
+    font-size: 15px; 
 }
 
 
