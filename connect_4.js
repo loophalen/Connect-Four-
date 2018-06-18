@@ -4,6 +4,7 @@ class Connect4 {
         this.COLS = 7;
         this.player = 'red'; 
         this.selector = selector; 
+        this.isGameOver = false; 
         this.createGrid();
         this.setupEventListeners(); 
     } 
@@ -49,6 +50,7 @@ class Connect4 {
         }
         //mouse enter on hover on col
         $board.on('mouseenter', '.col.empty', function(){
+            if (that.isGameOver) return;
             // console.log('here', this); 
             const col = $(this).data('col'); 
             const $lastEmptyCell = findLastEmptyCell(col); 
@@ -63,6 +65,7 @@ class Connect4 {
         })
 
         $board.on('click', '.col.empty', function(){
+            if (that.isGameOver) return; 
             const col = $(this).data('col'); 
             const row = $(this).data('row'); 
             const $lastEmptyCell = findLastEmptyCell(col); 
@@ -72,6 +75,7 @@ class Connect4 {
 
             const winner = that.checkForWinner(row, col) 
             if (winner){
+                that.isGameOver = true; 
                 alert(`Game Over! Player ${that.player} has won!`)
                 return; 
             }
@@ -122,6 +126,16 @@ class Connect4 {
             }
         }
 
+        //check diagonal from bottom left to top right
+        function checkDiagonalA (){
+            return checkWin({i: 1, j: -1}, {i: 1, j: 1}); 
+        }
+
+        //check diagonal from top left to bottom right
+        function checkDiagonalB (){
+            return checkWin({i: 1, j: 1}, {i: -1, j: -1}); 
+        }
+
         //check vertical direction 
         function checkVerticals(){
             return checkWin({i: -1, j: 0}, {i: 1, j: 0}); 
@@ -132,7 +146,7 @@ class Connect4 {
             return checkWin({i: 0, j: -1}, {i: 0, j: 1}); 
         }
         
-        return checkVerticals() || checkHorizontals()
+        return checkVerticals() || checkHorizontals() || checkDiagonalA() || checkDiagonalB()
     }
 
      
