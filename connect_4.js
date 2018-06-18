@@ -16,7 +16,11 @@ class Connect4 {
         ///create grid method
         createGrid(){
             const $board = $(this.selector); 
-            // console.log($board); 
+            // console.log($board);
+            //removes elements from board on restart
+            $board.empty();  
+            this.isGameOver = false; 
+            this.player = 'red'; 
             // create for loop for rows and cols
             for (let row = 0; row < this.ROWS; row++) {
                 const $row = $('<div>').addClass('row').attr('data-row', row); 
@@ -76,7 +80,7 @@ class Connect4 {
             const winner = that.checkForWinner(row, col) 
             if (winner){
                 that.isGameOver = true; 
-                alert(`Game Over! Player ${that.player} has won!`)
+                alert(`Game Over! Player ${that.player} has won!`); 
                 return; 
             }
             
@@ -148,6 +152,12 @@ class Connect4 {
         
         return checkVerticals() || checkHorizontals() || checkDiagonalA() || checkDiagonalB()
     }
+    //create restart method for game
+    restart() {
+        this.createGrid(); 
+
+    }
+
 
      
 } 
