@@ -122,11 +122,17 @@ class Connect4 {
             }
         }
 
+        //check vertical direction 
         function checkVerticals(){
             return checkWin({i: -1, j: 0}, {i: 1, j: 0}); 
         }
+
+        // check horizontal direction 
+        function checkHorizontals(){
+            return checkWin({i: 0, j: -1}, {i: 0, j: 1}); 
+        }
         
-        return checkVerticals()
+        return checkVerticals() || checkHorizontals()
     }
 
      

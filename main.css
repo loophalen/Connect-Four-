@@ -1,20 +1,27 @@
 body{
     text-align: center; 
-    background-color: black; 
+    background-color: #262626; 
     color: white;
+    /* border: 25px solid white;  */
+}
+
+h1{
+    /* font-family: 'Lato', sans-serif;
+    font-style: thin;  */
+    font-family: 'Open Sans', sans-serif;
 }
 
 
 #gameboard{
     display: inline-block;
-    background-color: yellow; 
+    background-color: #f5f5f5; 
 }
 
 .col {
     display: inline-block; 
     width: 100px; 
     height: 100px;
-    background-color: white; 
+    background-color:#f5f5f5; 
     border-radius: 50%; 
     margin: 5px; 
 }
@@ -24,20 +31,20 @@ body{
 }
 
 .next-red {
-    background: rgba(255, 0, 0, 0.295); 
+    background: #cd5554; 
 }
 
 .next-black {
-    background-color: rgba(0, 0, 0, 0.753); 
+    background-color: #2c2c2c; 
 }
 
 
 
 .col.red{
-    background-color: red; 
+    background-color: #cd5554; 
 }
 
 .col.black{
-    background-color: black; 
+    background-color: #2c2c2c; 
 }
 
