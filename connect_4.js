@@ -7,7 +7,7 @@ class Connect4 {
         this.isGameOver = false; 
         this.onPlayerMove = function() {}; 
         this.createGrid();
-        this.setupEventListeners(); 
+        this.setupEventListeners();  
     } 
 
         // const $grid = $(selector); 
@@ -78,12 +78,26 @@ class Connect4 {
             $lastEmptyCell.addClass(that.player);
             $lastEmptyCell.data('player', that.player); 
 
+            /// default alert 
+            // const winner = that.checkForWinner(row, col) 
+            // if (winner){
+            //     that.isGameOver = true; 
+            //     alert(`Game Over! Player ${that.player} has won!`); 
+            //     return; 
+            // }
+
+            ///custom alert - no default alert 
+
             const winner = that.checkForWinner(row, col) 
             if (winner){
                 that.isGameOver = true; 
-                alert(`Game Over! Player ${that.player} has won!`); 
-                return; 
+                $('#alert-div').text(`Game Over! Player ${that.player} has won!`) 
+                $('#alert-div').css({ display: 'block' })
+                // return; 
             }
+
+            
+            
             
             //alternates between red and black pieces 
             that.player = (that.player === 'red') ? 'black' : 'red'; 
@@ -92,6 +106,8 @@ class Connect4 {
             
         })
     }
+
+
 
     //create win conditions horizontal, vertical, diagnals 
     checkForWinner(row, col) {
@@ -154,10 +170,15 @@ class Connect4 {
         
         return checkVerticals() || checkHorizontals() || checkDiagonalA() || checkDiagonalB()
     }
+
+
     //create restart method for game
     restart() {
         this.createGrid();
-        this.onPlayerMove();  
+        this.onPlayerMove(); 
+        $('#alert-div').css({display:'none'}); 
+        
+       
 
     }
 
