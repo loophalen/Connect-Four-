@@ -1,4 +1,3 @@
-# loophalen.github.io
 
 # Minimalist Connect Four 
 
