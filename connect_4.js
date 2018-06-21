@@ -72,7 +72,7 @@ class Connect4 {
         $board.on('click', '.col.empty', function(){
             if (that.isGameOver) return; 
             const col = $(this).data('col'); 
-            const row = $(this).data('row'); 
+            // const row = $(this).data('row'); 
             const $lastEmptyCell = findLastEmptyCell(col); 
             $lastEmptyCell.removeClass(`empty next-${that.player}`); 
             $lastEmptyCell.addClass(that.player);
@@ -88,7 +88,10 @@ class Connect4 {
 
             ///custom alert - no default alert 
 
-            const winner = that.checkForWinner(row, col) 
+            const winner = that.checkForWinner(
+                $lastEmptyCell.data('row'),
+                $lastEmptyCell.data('col')
+            )
             if (winner){
                 that.isGameOver = true; 
                 $('#alert-div').text(`Game Over! Player ${that.player} has won!`) 
@@ -150,7 +153,7 @@ class Connect4 {
 
         //check diagonal from bottom left to top right
         function checkDiagonalA (){
-            return checkWin({i: 1, j: -1}, {i: 1, j: 1}); 
+            return checkWin({i: 1, j: -1}, {i: -1, j: 1}); 
         }
 
         //check diagonal from top left to bottom right
